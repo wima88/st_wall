@@ -17,3 +17,5 @@ modules/
 tools/
 zephyr/
 .west/config
+app/conf/version.conf
+app/.cache/

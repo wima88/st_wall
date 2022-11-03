@@ -52,15 +52,23 @@ if(version)
 
 endif()
 
-
-
 if(BUILD_TYPE)
   file(APPEND conf/version.conf "CONFIG_APP_RELEASE_TYPE=\"${BUILD_TYPE}\"\n")
 endif()
 
+# Define configuration files.
+list(APPEND CONF_FILE
+  ${CMAKE_CURRENT_SOURCE_DIR}/conf/prj.conf
+  ${CMAKE_CURRENT_SOURCE_DIR}/conf/version.conf
+  ${CMAKE_CURRENT_SOURCE_DIR}/conf/${BUILD_TYPE}.conf
+  ${CMAKE_CURRENT_SOURCE_DIR}/boards/${BOARD}.conf
+  )
+
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(led_ws2812)
+
+add_subdirectory(src/version)
 
 FILE(GLOB app_sources src/*.c)
 target_sources(app PRIVATE ${app_sources})

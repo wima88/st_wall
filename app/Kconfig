@@ -1,8 +1,10 @@
 # Copyright (c) 2019 Nordic Semiconductor ASA
 # SPDX-License-Identifier: Apache-2.0
 
-# Use the SPI driver by default, unless the GPIO driver is
-# specifically configured in.
+mainmenu "Application"
+
+rsource "src/version/Kconfig"
+
 config SPI
 	default y
 
